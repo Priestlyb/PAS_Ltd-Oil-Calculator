@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palm Oil Price Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+      background: #fffdf9;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    #result {
+      margin-top: 1rem;
+      font-weight: bold;
+      background: #f8f8f8;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Priestly Acadia Synergy Palm Oil Price Calculator</h2>
+  <label for="quantity">Enter quantity in liters:</label><br>
+  <input type="number" id="quantity" min="1" placeholder="e.g., 150" /><br>
+  <button onclick="calculatePrice()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculatePrice() {
+      const qty = parseInt(document.getElementById('quantity').value);
+      if (isNaN(qty) || qty <= 0) {
+        document.getElementById('result').innerText = "Please enter a valid quantity.";
+        return;
+      }
+
+      let pricePerLitre;
+
+      if (qty < 25) {
+        pricePerLitre = 3000;
+      } else if (qty < 100) {
+        pricePerLitre = 2900;
+      } else if (qty < 500) {
+        pricePerLitre = 2800;
+      } else {
+        pricePerLitre = 2750;
+      }
+
+      const total = qty * pricePerLitre;
+
+      document.getElementById('result').innerText =
+        `Price per Liter: ₦${pricePerLitre}\nTotal Price: ₦${total.toLocaleString()}`;
+    }
+  </script>
+
+</body>
+</html>
